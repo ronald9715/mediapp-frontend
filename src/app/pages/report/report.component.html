@@ -1,0 +1,21 @@
+<mat-toolbar>Charts, PDF and Image</mat-toolbar>
+<button mat-button color="primary" (click)="change('line')">Line</button>
+<button mat-button color="primary" (click)="change('bar')">Bar</button>
+<button mat-button color="primary" (click)="change('doughnut')">Doughnut</button>
+<button mat-button color="primary" (click)="change('radar')">Radar</button>
+<button mat-button color="primary" (click)="change('pie')">Pie</button>
+
+<div [hidden]="!chart">
+    <canvas id="canvas">{{chart}}</canvas>
+</div>
+
+<button mat-button color="primary" (click)="viewReport()">View PDF</button>
+<button mat-button color="primary" (click)="downloadReport()">Download PDF</button>
+
+<!--<pdf-viewer *ngIf="pdfSrc" [src]="pdfSrc" [render-text]="true" style="width: 800px; height: 800px;" ></pdf-viewer>-->
+<button mat-raised-button color="primary" onclick="document.getElementById('archivo').click()">Select File</button>
+<input id="archivo" style="display: none;" mat-button type="file" (change)="selectFile($event)">
+
+<button mat-button color="primary" (click)="upload()" [disabled]="!selectedFile">Upload</button>
+
+<img mat-card-image [src]="imageData" width="500" height="500">

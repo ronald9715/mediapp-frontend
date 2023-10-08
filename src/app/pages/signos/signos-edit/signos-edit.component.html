@@ -1,0 +1,43 @@
+<mat-toolbar>
+    <span>Register Signos Vitales</span>
+</mat-toolbar>
+
+<div class="example-container">
+    <mat-form-field>
+        <mat-select placeholder="Select patient"  [(ngModel)]="idPatientSelected">
+            <mat-option *ngFor="let p of patients" [value]="p.idPatient">
+                {{p.firstName}} {{p.lastName}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" [min]="minDate"  [(ngModel)]="dateSelected">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Temperatura" [(ngModel)]="temperatura">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Pulso" [(ngModel)]="pulso">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Ritmo" [(ngModel)]="ritmo">
+    </mat-form-field>
+
+    <br/>
+    <br/>
+    <button type="button" mat-raised-button color="primary" (click)="save()">
+        <mat-icon>done</mat-icon>
+        <span>Save</span>
+    </button>
+
+    <button mat-raised-button color="accent" type="button" routerLink="/pages/signos">
+        <mat-icon>cancel</mat-icon>
+        <span>Cancel</span>
+    </button>
+</div>
